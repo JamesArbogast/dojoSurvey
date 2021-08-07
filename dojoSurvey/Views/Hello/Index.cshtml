@@ -1,0 +1,48 @@
+@model User
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link rel="stylesheet" href="~/styles.css">
+  </head>
+  <body>
+    <h1>Take the Survey</h1>
+    <form>
+      <div>
+        <label>Your Name: </label>
+        <input type="input" name="Name">
+      </div>
+      <div>
+        <label>Dojo Location</label>
+          <select name="DojoLocations">
+            @foreach (string location in Model.DojoLocations)
+            {
+              <option>@location</option>
+            }
+          </select>
+      </div>
+      <div>
+        <label>Favorite Language</label>
+        <select name="FavoriteLanguage">
+          @foreach (string language in Model.FavoriteLanguage)
+          {
+            <option>@language</option>
+          }
+        </select>
+      </div>
+      <div>
+        <label>Comments: (optional)</label>
+      </div>
+      <div>
+        <textarea></textarea>
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
