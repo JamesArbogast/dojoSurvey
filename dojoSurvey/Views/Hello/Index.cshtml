@@ -11,15 +11,15 @@
   </head>
   <body>
     <h1>Take the Survey</h1>
-    <form>
+    <form action="/process-survey" method="POST">
       <div>
         <label>Your Name: </label>
         <input type="input" name="Name">
       </div>
       <div>
         <label>Dojo Location</label>
-          <select name="DojoLocations">
-            @foreach (string location in Model.DojoLocations)
+          <select name="DojoLocation">
+            @foreach (string location in Model.DojoLocation)
             {
               <option>@location</option>
             }
@@ -38,7 +38,7 @@
         <label>Comments: (optional)</label>
       </div>
       <div>
-        <textarea></textarea>
+        <textarea name="Comment"></textarea>
       </div>
       <div>
         <button>Submit</button>

@@ -1,4 +1,4 @@
-@model ResultsView
+@model User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Submitted Info</title>
     <link rel="stylesheet" href="~/styles.css">
   </head>
+  <body>
+    <h1>Submitted Info</h1>
+    <p>Name : @Model.Name</p>
+    <p>Location: @Model.DojoLocation[0]</p>
+    <p>Lanuage: @Model.FavoriteLanguage[0]</p>
+    <p style="width: 100%; height: 200px">Comments: @Model.Comment</p>
+  </body>
 </html>
