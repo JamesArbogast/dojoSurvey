@@ -29,11 +29,8 @@ namespace dojoSurvey.Controllers     //be sure to use your own project's namespa
 
         Survey survey = new Survey()
         {
-          Name = "",
-          DojoLocation = dojoLocation,
-          FavoriteLanguage = favoriteLanguage,
-          Comment = ""
-
+          DojoLocations = dojoLocation,
+          FavoriteLanguages = favoriteLanguage
         };
 
         return View("Index", survey);
@@ -45,20 +42,39 @@ namespace dojoSurvey.Controllers     //be sure to use your own project's namespa
         if(ModelState.IsValid)
         {
             // do somethng!  maybe insert into db?  then we will redirect
-            return RedirectToAction("Results");
+            return RedirectToAction("Results", survey);
         }
         else
         {
-            // Oh no!  We need to return a ViewResponse to preserve the ModelState, and the errors it now contains!
-            return View("Index");
+            List<string> dojoLocation = new List<string>()
+            {
+              "San Jose",
+              "Seattle",
+              "Orange County",
+              "Arlington"
+            };
+            List<string> favoriteLanguage = new List<string>()
+            {
+              "JavaScript",
+              "Python",
+              "Java",
+              "C#"
+            };
+
+            Survey survey1 = new Survey()
+            {
+              DojoLocations = dojoLocation,
+              FavoriteLanguages = favoriteLanguage
+            };
+            return View("Index", survey1);
         }
       }
 
       [HttpGet("/results")]
       // GET requests to "localhost:5000/about" go here
-      public ViewResult Results()
+      public ViewResult Results(Survey survey)
       {
-        return View("Results");
+        return View("Results", survey);
       }
 
 
