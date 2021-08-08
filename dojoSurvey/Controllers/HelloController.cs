@@ -39,11 +39,19 @@ namespace dojoSurvey.Controllers     //be sure to use your own project's namespa
         return View("Index", survey);
       }
 
-      [HttpPost]
-      [Route("/process-survey")]
-      public ViewResult ProcessForm(Survey survey)
+      [HttpPost("/process-survey")]
+      public IActionResult ProcessSurvey(Survey survey)
       {
-        return View("Results", survey);
+        if(ModelState.IsValid)
+        {
+            // do somethng!  maybe insert into db?  then we will redirect
+            return RedirectToAction("Results");
+        }
+        else
+        {
+            // Oh no!  We need to return a ViewResponse to preserve the ModelState, and the errors it now contains!
+            return View("Index");
+        }
       }
 
       [HttpGet("/results")]

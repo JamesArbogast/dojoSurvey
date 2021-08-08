@@ -11,23 +11,26 @@
   </head>
   <body>
     <h1>Take the Survey</h1>
-    <form action="/process-survey" method="POST">
+    <form asp-action="/process-survey" asp-controller="HelloController" method="POST">
       <div>
-        <label>Your Name: </label>
-        <input type="input" name="Name">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name">Your Name: </label>
+        <input type="input" asp-for="Name">
       </div>
       <div>
-        <label>Dojo Location</label>
-          <select name="DojoLocation">
-            @foreach (string location in Model.DojoLocation)
-            {
-              <option>@location</option>
-            }
-          </select>
+        <span asp-validation-for="DojoLocation"></span>
+        <label asp-for="DojoLocation">Dojo Location: </label>
+        <select asp-for="DojoLocation">
+          @foreach (string location in Model.DojoLocation)
+          {
+            <option>@location</option>
+          }
+        </select>
       </div>
       <div>
-        <label>Favorite Language</label>
-        <select name="FavoriteLanguage">
+        <span asp-validation-for="FavoriteLanguage"></span>
+        <label asp-for="FavoriteLanguage">Favorite Language: </label>
+        <select asp-for="FavoriteLanguage">
           @foreach (string language in Model.FavoriteLanguage)
           {
             <option>@language</option>
@@ -35,13 +38,13 @@
         </select>
       </div>
       <div>
-        <label>Comments: (optional)</label>
+        <label asp-for="Comment">Comments: (optional) </label>
       </div>
       <div>
         <textarea name="Comment"></textarea>
       </div>
       <div>
-        <button>Submit</button>
+        <input value="Add Survey" type="submit">
       </div>
     </form>
   </body>
