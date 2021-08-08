@@ -27,20 +27,23 @@ namespace dojoSurvey.Controllers     //be sure to use your own project's namespa
           "C#"
         };
 
-        User user = new User()
+        Survey survey = new Survey()
         {
+          Name = "",
           DojoLocation = dojoLocation,
-          FavoriteLanguage = favoriteLanguage
+          FavoriteLanguage = favoriteLanguage,
+          Comment = ""
+
         };
 
-        return View("Index", user);
+        return View("Index", survey);
       }
 
       [HttpPost]
       [Route("/process-survey")]
-      public ViewResult ProcessForm(User user)
+      public ViewResult ProcessForm(Survey survey)
       {
-        return View("Results", user);
+        return View("Results", survey);
       }
 
       [HttpGet("/results")]

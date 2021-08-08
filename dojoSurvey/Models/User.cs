@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace dojoSurvey.Models
 {
-    public class User
+    public class Survey
     {
         public string Name { get; set; }
         public List<string> DojoLocation { get; set; }
